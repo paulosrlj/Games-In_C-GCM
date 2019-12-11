@@ -4,5 +4,5 @@
 
 void preencherTabuleiro(char *tabuleiro);
 
-
+void tabuleiro(char *tabuleiro);
 
