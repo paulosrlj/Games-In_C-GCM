@@ -2,7 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/* Função para preencher o tabuleiro */
 void preencherTabuleiro(char *tabuleiro);
 
-void tabuleiro(char *tabuleiro);
+/* Imprimir o tabuleiro */
+void imprimirTabuleiro(char *tabuleiro);
+
+/* Função para gerar os números aleatórios */
 

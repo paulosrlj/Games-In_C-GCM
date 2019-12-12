@@ -1,5 +1,7 @@
 #include "funcoes.h"
 
+/* Função para preencher o tabuleiro */
+
 void preencherTabuleiro(char *tabuleiro) {
 	int i,j;
 	for(i=0; i<TAM; i++){
@@ -9,17 +11,20 @@ void preencherTabuleiro(char *tabuleiro) {
 	}
 }
 
-void tabuleiro(char *tabuleiro){
+/* Imprimir o tabuleiro */
+
+void imprimirTabuleiro(char *tabuleiro){
 	 int i,j;
 	 for(i = 0 ; i < TAM ; i++){
 	 	for(j = 0 ; j < TAM ; j++){
-	 		printf("%c %c",mat[i][j],j==TAM-1?' ':'|');
+	 		printf(" %c %c",tabuleiro[i*TAM+j], j==TAM-1?' ':'|');
 		 }
 		 if(i!=TAM-1){
-		 	printf("\n-----------------------------");
+		 	printf("\n----------------------------------------");
 		 }
 		  printf("\n");
 	 }
+	 printf("\n\n");
 }
 
 
