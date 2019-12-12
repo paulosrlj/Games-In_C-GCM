@@ -1,3 +1,5 @@
+/* Autores: Paulo S, Francisco P, Marcio Fernandes */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcoes.h"
