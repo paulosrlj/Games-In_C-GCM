@@ -1,4 +1,5 @@
 /* Autores: Paulo S, Francisco P, Marcio Fernandes */
+/* Data: 19/12*/
 
 #include <stdio.h>
 #include <stdlib.h>
