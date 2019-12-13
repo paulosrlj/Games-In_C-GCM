@@ -7,11 +7,14 @@
 
 int main(){
 	
-	char tabuleiro[TAM*TAM];
+	char tabuleiroJogador[TAM*TAM];
+	char tabuleiroMaquina[TAM*TAM];
 	
-	preencherTabuleiro(tabuleiro);
-	imprimirTabuleiro(tabuleiro);
+	preencherTabuleiro(tabuleiroJogador);
+	preencherTabuleiro(tabuleiroMaquina);
 	
+	imprimirTabuleiro(tabuleiroJogador);
+	imprimirTabuleiro(tabuleiroMaquina);
 	system("pause");
 	return 0;
 }

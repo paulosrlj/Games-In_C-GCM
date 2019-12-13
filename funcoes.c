@@ -27,4 +27,9 @@ void imprimirTabuleiro(char *tabuleiro){
 	 printf("\n\n");
 }
 
+/* Preparando as posições dos navios */
+
+
+
+
 
