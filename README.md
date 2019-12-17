@@ -3,5 +3,5 @@
 Integrantes: Paulo Sérgio, Francisco Paulino, Márcio Fernandes
 
 #Instruções de uso
--> Para executar o programa, uma vez que esteja pronto, basta baixar e clicar no executável (Batalha-Naval.exe)
+-> Para executar o programa, uma vez que esteja pronto, basta baixar e clicar no executável (Batalha-Naval.exe)<br>
 -> Para verificar o código fonte é necessário baixar um compilador, de preferência o DevC++. Depois basta apenas baixar o repositório, clicar no arquivo ".dev" e o projeto abrirá sozinho.
