@@ -19,9 +19,9 @@ int main(){
 		printf("[1] - Batalha Naval\n");
 		printf("[2] - Jogo da memória\n");
 		printf("[3] - Jogo da velha\n");
-		printf("[4] - Sair\n"); scanf("%u", &escolhaOpcao);
+		printf("[4] - Sair\n"); scanf("%u", &escolhaJogo);
 		
-		switch(escolhaOpcao){
+		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
 			
