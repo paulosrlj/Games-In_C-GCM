@@ -4,25 +4,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "funcoes.h"
+#include <locale.h>
 
 int main(){
-	srand(time(NULL));
+	setlocale(LC_ALL,"");
 	
-	char tabuleiroJogador[TAM*TAM];
-	char tabuleiroMaquina[TAM*TAM];
+	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
+	printf("==== Jogos em C - Batalha Naval, Jogo da memória, Jogo da velha. ====\n\n");
 	
-
-	preencherTabuleiro(tabuleiroJogador);
-	preencherTabuleiro(tabuleiroMaquina);
+	unsigned int escolhaJogo = 0;
 	
-	/* local onde são guardados os navios posiconados */
-	char gabaritoJogador[TAM*TAM];
-	char gabaritoMaquina[TAM*TAM];
-	
-	
-	imprimirTabuleiro(tabuleiroMaquina);
-	imprimirTabuleiro(tabuleiroJogador);
+	while(escolhaJogo != 4){
+		printf("Qual jogo deseja jogar?\n");
+		printf("[1] - Batalha Naval\n");
+		printf("[2] - Jogo da memória\n");
+		printf("[3] - Jogo da velha\n");
+		printf("[4] - Sair\n"); scanf("%u", &escolhaOpcao);
+		
+		switch(escolhaOpcao){
+		
+			case 1: //Batalha Naval - Paulo
+			
+				break;
+			
+			case 2: //Jogo da memória - Francisco
+		
+				break;
+			
+			case 3: //Jogo da velha - Marcio
+				
+				break;
+		
+			case 4:
+			
+				break; 
+		
+		}
+	}
 	
 	system("pause");
 	return 0;
