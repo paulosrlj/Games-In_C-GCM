@@ -13,10 +13,10 @@ int main(void){
 	
 	int a = 0,b = 0,acertos = 0;
 	char f;
-	int numeros[6];
-	int respostas[6];
+	int numeros[TAM];
+	int respostas[TAM];
 	
-//inclusao de linguagem
+//inclusão de linguagem
 setlocale(LC_ALL,"Portuguese");
 
 //inclusão de titulo no console;
@@ -37,6 +37,21 @@ do{
 for(a = 0; a < TAM ; a++){
 	numeros[a] = (rand() % 25) + 1;
 }
+//definição do tempo de amostra
+b = TAM;
+do{
+	system("cls");
+	printf("Decore a sequencia de numeros abaixo em %d s:\n\n",j);
+	b--;
+	//comando de repeticao para mostrar os numeros criados aleatoriamente;
+	
+	for(a = 0;a < TAM; a++){
+		printf("%d\t", numeros[a]);
+	}
+	//sleep-para o programa por um determinado tempo;
+	sleep(1000);
+}while(b > 0);
+
 
 
 }
