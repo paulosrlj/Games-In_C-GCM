@@ -31,6 +31,7 @@ CompilerSet=0
 CompilerSettings=0000000000000000000000000
 UnitCount=3
 
+
 [VersionInfo]
 Major=1
 Minor=0
@@ -61,6 +62,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
+
 FileName=batalhaNaval.h
 CompileCpp=0
 Folder=
@@ -71,6 +73,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
+
 FileName=batalhaNaval.c
 CompileCpp=0
 Folder=
