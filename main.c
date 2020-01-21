@@ -13,26 +13,26 @@ int main(){
 	Tabuleiro *tab = criarTabuleiro();
 	srand(time(NULL));
 	
-	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
-	printf("==== Jogos em C - Batalha Naval, Jogo da memória, Jogo da velha. ====\n\n");
+	printf("Projeto GerÃªncia de controle e mudanÃ§as\nIntegrantes: Francisco Paulino, Paulo SÃ©rgio, Marcio Fernandes.\n\n");
+	printf("==== Jogos em C - Batalha Naval, Jogo da memÃ³ria, Jogo da velha. ====\n\n");
 	
 	unsigned int escolhaJogo = 0;
 	
 	while(escolhaJogo != 4){
 		printf("Qual jogo deseja jogar?\n\n");
 		printf("[1] - Batalha Naval\n");
-		printf("[2] - Jogo da memória\n");
+		printf("[2] - Jogo da memÃ³ria\n");
 		printf("[3] - Jogo da velha\n");
 		printf("[4] - Sair\n"); scanf("%u", &escolhaJogo);
 		
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
-				posicionarNavios(tab);
+				posMachineShips(tab);
 				imprimir(tab);
 			break;
 			
-			case 2: //Jogo da memória - Francisco
+			case 2: //Jogo da memÃ³ria - Francisco
 		
 			break;
 			
