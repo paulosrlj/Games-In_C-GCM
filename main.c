@@ -5,9 +5,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
+#include "batalhaNaval.h"
 
 int main(){
 	setlocale(LC_ALL,"");
+	
+	Tabuleiro *tab = criarTabuleiro();
+	srand(time(NULL));
 	
 	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
 	printf("==== Jogos em C - Batalha Naval, Jogo da memória, Jogo da velha. ====\n\n");
@@ -15,7 +19,7 @@ int main(){
 	unsigned int escolhaJogo = 0;
 	
 	while(escolhaJogo != 4){
-		printf("Qual jogo deseja jogar?\n");
+		printf("Qual jogo deseja jogar?\n\n");
 		printf("[1] - Batalha Naval\n");
 		printf("[2] - Jogo da memória\n");
 		printf("[3] - Jogo da velha\n");
@@ -24,20 +28,21 @@ int main(){
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
-			
-				break;
+				posicionarNavios(tab);
+				imprimir(tab);
+			break;
 			
 			case 2: //Jogo da memória - Francisco
 		
-				break;
+			break;
 			
 			case 3: //Jogo da velha - Marcio
 				
-				break;
+			break;
 		
 			case 4:
 			
-				break; 
+			break; 
 		
 		}
 	}
