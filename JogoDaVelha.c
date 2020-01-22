@@ -37,7 +37,8 @@ void jogar(char jogador[50], int jogo[3][3]){
 			jogo[linha][coluna] = -1;
 		}
 	}else{
-		printf("Impossivel marcar na posicao! ");
+		system("cls");
+		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
 }
 
@@ -51,6 +52,23 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	vencedor = FALSE;
 }
 
+int verifica(int jogo[3][3]){
+	int linha, coluna, resultado=0;
+	for(linha=0;linha<3;linha++){
+		for(coluna=0;coluna<3;coluna++){
+			resultado = jogo[linha][coluna] + resultado;
+		if(resultado == 3){
+			printf("O jogador %s foi vencedor!!! ",jogador1);
+			return TRUE;
+		}else if(resultado == -3){
+			printf("O jogador %s foi o vencedor!!! ",jogador2);
+			return TRUE;
+		}
+	}
+		resultado = 0;
+	}
+}
+
 main(){
 	printf("\nDigite o nome do jogador 1: ");
 	gets(jogador1);
@@ -60,9 +78,10 @@ main(){
 	fflush(stdin);
 	iniciar(jogo);
 	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
-		printf("\nVez de %s \n",jogador1);
+		printf("\nVez de %s \n\n",jogador1);
 		jogar(jogador1, jogo);
-		printf("\nVez de %s \n",jogador2);
+		printf("\nVez de %s \n\n",jogador2);
 		jogar(jogador2, jogo);
+		vencedor = verifica(jogo);
 	}
 }
