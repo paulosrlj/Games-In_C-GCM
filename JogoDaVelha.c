@@ -4,7 +4,7 @@
 #define FALSE 0
 
 int jogo [3][3];
-
+char jogador1[50], jogador2[50];
 int vencedor;
 
 void imprimir(int jogo[3][3]){
@@ -26,12 +26,18 @@ void imprimir(int jogo[3][3]){
 void jogar(char jogador[50], int jogo[3][3]){
 	int linha, coluna;
 	imprimir(jogo);
-	printf("\n Digite em ordem a linha e a coluna que deseja marcar com X: ");
-	scanf("%d%d",&linha, coluna);
+	printf("\n Digite em ordem a linha e a coluna que deseja marcar: ");
+	scanf("%d%d",&linha, &coluna);
+	linha--;
+	coluna--;
 	if(jogo[linha][coluna] == 0){
-		jogo[linha][coluna] = 1;
+		if(jogador == jogador1){
+			jogo[linha][coluna] = 1;
+		}else{
+			jogo[linha][coluna] = -1;
+		}
 	}else{
-		printf("Impossivel marcar na posição! ");
+		printf("Impossivel marcar na posicao! ");
 	}
 }
 
@@ -46,7 +52,6 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 }
 
 main(){
-	char jogador1[50], jogador2[50];
 	printf("\nDigite o nome do jogador 1: ");
 	gets(jogador1);
 	fflush(stdin);
@@ -57,9 +62,7 @@ main(){
 	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
 		printf("\nVez de %s \n",jogador1);
 		jogar(jogador1, jogo);
-		system("cls");
 		printf("\nVez de %s \n",jogador2);
 		jogar(jogador2, jogo);
-		system("cls");
 	}
 }
