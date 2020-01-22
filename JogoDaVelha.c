@@ -7,12 +7,39 @@ int jogo [3][3];
 
 int vencedor;
 
+void imprimir(int jogo[3][3]){
+	int linha, coluna;
+	for(linha=0; linha<3; linha++){
+		for(coluna=0; coluna<3; coluna++){
+			if(jogo[linha][coluna] == 1){
+				printf(" X |");
+			}else if(jogo[linha][coluna] == -1){
+			printf(" O |" );	
+			}else{
+				printf("   |");
+			}
+		}
+		printf("\n");
+	}
+}
+
+void jogar(char jogador[50], int jogo[3][3]){
+	int linha, coluna;
+	imprimir(jogo);
+	printf("\n Digite em ordem a linha e a coluna que deseja marcar com X: ");
+	scanf("%d%d",&linha, coluna);
+	if(jogo[linha][coluna] == 0){
+		jogo[linha][coluna] = 1;
+	}else{
+		printf("Impossivel marcar na posição! ");
+	}
+}
 
 void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		for(coluna=0;coluna<3;coluna++){
-			jogo[linha][coluna] = ;
+			jogo[linha][coluna] = 0;
 		}
 	}
 	vencedor = FALSE;
@@ -26,7 +53,13 @@ main(){
 	printf("\nDigite o nome do jogador 2: ");
 	gets(jogador2);
 	fflush(stdin);
+	iniciar(jogo);
 	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
-		
+		printf("\nVez de %s \n",jogador1);
+		jogar(jogador1, jogo);
+		system("cls");
+		printf("\nVez de %s \n",jogador2);
+		jogar(jogador2, jogo);
+		system("cls");
 	}
 }
