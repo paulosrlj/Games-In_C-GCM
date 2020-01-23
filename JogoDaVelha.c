@@ -6,7 +6,6 @@
 
 int jogo [3][3];
 char jogador1[50], jogador2[50];
-char jogando[50];
 int vencedor;
 
 void imprimir(int jogo[3][3]){
@@ -42,6 +41,7 @@ void jogar(char jogador[50], int jogo[3][3]){
 		system("cls");
 		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
+	vencedor = verifica(jogo);
 }
 
 void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
@@ -52,7 +52,6 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 		}
 	}
 	vencedor = FALSE;
-	strcpy (jogando, jogador1);
 }
 
 int verifica(int jogo[3][3]){
@@ -61,16 +60,15 @@ int verifica(int jogo[3][3]){
 		for(coluna=0;coluna<3;coluna++){
 			resultado = jogo[linha][coluna] + resultado;
 		if(resultado == 3){
-			printf("O jogador %s foi vencedor!!! ",jogador1);
+			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			return TRUE;
 		}else if(resultado == -3){
-			printf("O jogador %s foi o vencedor!!! ",jogador2);
+			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			return TRUE;
 		}
 	}
 		resultado = 0;
 	}
-	strcpy(jogando,jogador2);
 }
 
 main(){
@@ -82,13 +80,9 @@ main(){
 	fflush(stdin);
 	iniciar(jogo);
 	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
-	if(jogando == jogador1){
-		printf("\nVez de %s \n\n",jogando);
-		jogar(jogando, jogo);	
-	}else{
-		printf("\nVez de %s \n\n",jogando);
-		jogar(jogando, jogo);
-		strcpy(jogando,jogador1);
-	}
+		printf("\nVez de %s \n\n",jogador1);
+		jogar(jogador1, jogo);
+		printf("\nVez de %s \n\n",jogador2);
+		jogar(jogador2, jogo);
 	}
 }
