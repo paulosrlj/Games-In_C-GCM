@@ -52,7 +52,7 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 		}
 	}
 	vencedor = FALSE;
-	jogando = jogador1;
+	strcpy (jogando, jogador1);
 }
 
 int verifica(int jogo[3][3]){
@@ -70,7 +70,7 @@ int verifica(int jogo[3][3]){
 	}
 		resultado = 0;
 	}
-	jogando = jogador2;
+	strcpy(jogando,jogador2);
 }
 
 main(){
@@ -88,7 +88,7 @@ main(){
 	}else{
 		printf("\nVez de %s \n\n",jogando);
 		jogar(jogando, jogo);
-		jogando = jogador1;
+		strcpy(jogando,jogador1);
 	}
 	}
 }
