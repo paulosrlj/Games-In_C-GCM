@@ -1,10 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #define TRUE 1
 #define FALSE 0
 
 int jogo [3][3];
 char jogador1[50], jogador2[50];
+char jogando[50];
 int vencedor;
 
 void imprimir(int jogo[3][3]){
@@ -50,6 +52,7 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 		}
 	}
 	vencedor = FALSE;
+	jogando = jogador1;
 }
 
 int verifica(int jogo[3][3]){
@@ -67,6 +70,7 @@ int verifica(int jogo[3][3]){
 	}
 		resultado = 0;
 	}
+	jogando = jogador2;
 }
 
 main(){
@@ -78,10 +82,13 @@ main(){
 	fflush(stdin);
 	iniciar(jogo);
 	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
-		printf("\nVez de %s \n\n",jogador1);
-		jogar(jogador1, jogo);
-		printf("\nVez de %s \n\n",jogador2);
-		jogar(jogador2, jogo);
-		vencedor = verifica(jogo);
+	if(jogando == jogador1){
+		printf("\nVez de %s \n\n",jogando);
+		jogar(jogando, jogo);	
+	}else{
+		printf("\nVez de %s \n\n",jogando);
+		jogar(jogando, jogo);
+		jogando = jogador1;
+	}
 	}
 }
