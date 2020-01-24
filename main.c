@@ -3,11 +3,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
 #include <time.h>
 #include <locale.h>
 #include "batalhaNaval.h"
 
-int main(){
+int main(void){
 	setlocale(LC_ALL,"");
 	
 	Tabuleiro *tab = criarTabuleiro();
@@ -23,7 +25,8 @@ int main(){
 		printf("[1] - Batalha Naval\n");
 		printf("[2] - Jogo da memória\n");
 		printf("[3] - Jogo da velha\n");
-		printf("[4] - Sair\n"); scanf("%u", &escolhaJogo);
+		printf("[4] - Sair\n"); 
+		scanf("%u", &escolhaJogo);
 		
 		switch(escolhaJogo){
 		

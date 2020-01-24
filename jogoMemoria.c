@@ -20,13 +20,13 @@ int main(void){
 setlocale(LC_ALL,"Portuguese");
 
 //inclusão de titulo no console;
-setconsoletitle("jogo da memoria");
+SetConsoleTitle("jogo da memoria");
 
 //gera os numeros aleatórios
 srand(time(NULL));
 
 printf("O programa gera 6 numeros aleatorios entre 1 e 25\n");
-printf("Decore os numeros exibidos, e após cinco segundos \nreescreva-os na tela na mesma ordem\n");
+printf("Decore os numeros exibidos, e após cinco segundos \nreescreva-os na tela na mesma ordem\n\n");
 printf("Start Game -[ENTER]");
 
 //corresponde ao enter, com o valor de 13 pela tabela ascii
@@ -41,7 +41,7 @@ for(a = 0; a < TAM ; a++){
 b = TAM;
 do{
 	system("cls");
-	printf("Decore a sequencia de numeros abaixo em %d s:\n\n",j);
+	printf("Decore a sequencia de numeros abaixo em %d s:\n\n",b);
 	b--;
 	//comando de repeticao para mostrar os numeros criados aleatoriamente;
 	
@@ -49,9 +49,35 @@ do{
 		printf("%d\t", numeros[a]);
 	}
 	//sleep-para o programa por um determinado tempo;
-	sleep(1000);
+	Sleep  (1000);
 }while(b > 0);
 
-
+  	system ("cls");
+    printf ("Informe os números que foram exibidos\n\n");
+   
+    for (a = 0;a < TAM; a++){
+        printf ("\t%d° número: ", a+1);
+        scanf ("%d", &respostas[a]);
+        if (respostas[a]==numeros[a]){
+            acertos++;
+        }
+    }
+   
+    if (acertos==TAM){
+        printf ("\n\nParabéns! Você acertou todos. Veja os numeros:\n\n\t");
+        for (a = 0;a < TAM;a++){
+            printf ("%d\t", numeros[a]);
+        }
+    }
+    else
+    {
+        printf ("\n\nQue pena! Tente outra vez. Veja os números exibidos:\n\n\t");
+        for (a = 0;a < TAM; a++){
+            printf ("%d\t", numeros[a]);
+        }
+    }
+    printf ("\n\n");
+    system ("pause");
+	return 0;
 
 }
