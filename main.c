@@ -3,10 +3,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
 #include <time.h>
 #include <locale.h>
+#include "jogoMemoria.c"
 
-int main(){
+int main(void){
 	setlocale(LC_ALL,"");
 	
 	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
@@ -19,7 +22,8 @@ int main(){
 		printf("[1] - Batalha Naval\n");
 		printf("[2] - Jogo da memória\n");
 		printf("[3] - Jogo da velha\n");
-		printf("[4] - Sair\n"); scanf("%u", &escolhaJogo);
+		printf("[4] - Sair\n"); 
+		scanf("%u", &escolhaJogo);
 		
 		switch(escolhaJogo){
 		
@@ -27,8 +31,7 @@ int main(){
 			
 				break;
 			
-			case 2: //Jogo da memória - Francisco
-		
+			case 2: 
 				break;
 			
 			case 3: //Jogo da velha - Marcio
