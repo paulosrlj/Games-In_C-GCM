@@ -25,58 +25,67 @@ void posMachineShips(Tabuleiro *tab){
 	int num = 0;
 		
 	/* Corveta */
-	num = rand() % (TAM*TAM);
+	num = rand() % (TAM*TAM) + 1;
 	
-	while(verificaNum(tab, num, 'c') == TRUE)
-		num = rand() % (TAM*TAM);
+	while(checkShip(tab, num, 'c') == TRUE)
+		num = rand() % (TAM*TAM) + 1;
 
 	for(k = 0; k < Cj; k++){
-		tab->tab[num/10][num%10+k] = 'c';
+		tab->tab[num/10][num%10+k] = 'C';
 	}
 	
 	/* Submarino */
-	num = rand() % 100;
-	while(verificaNum(tab, num, 's') == TRUE)
-		num = rand() % (TAM*TAM);
+	num = rand() % (TAM*TAM) + 1;
+	while(checkShip(tab, num, 's') == TRUE)
+		num = rand() % (TAM*TAM) + 1;
 	
 	for(k = 0; k < Sj; k++){
-		tab->tab[num/10][num%10+k] = 's';
+		tab->tab[num/10][num%10+k] = 'S';
 	}
 	
 	/* Fragrata */
-	while(verificaNum(tab, num, 'f') == TRUE)
-		num = rand() % (TAM*TAM);
+	while(checkShip(tab, num, 'f') == TRUE)
+		num = rand() % (TAM*TAM) + 1;
 	
 	for(k = 0; k < Fj; k++){
-		tab->tab[num/10][num%10+k] = 'f';
+		tab->tab[num/10][num%10+k] = 'F';
 	}
 	
 	/* Destroyer */
-	while(verificaNum(tab, num, 'd') == TRUE)
-		num = rand() % (TAM*TAM);
+	while(checkShip(tab, num, 'd') == TRUE)
+		num = rand() % (TAM*TAM) + 1;
 	
 	for(k = 0; k < Dj; k++){
-		tab->tab[num/10][num%10+k] = 'd';
+		tab->tab[num/10][num%10+k] = 'D';
 	}
 	
 	/* Porta aviões */
-	while(verificaNum(tab, num, 'p') == TRUE)
-		num = rand() % (TAM*TAM);
+	while(checkShip(tab, num, 'p') == TRUE)
+		num = rand() % (TAM*TAM) + 1;
 	
 	for(i = 0; i < Pi; i++){
 		for(j = 0; j < Pj; j++){
-			tab->tab[num/10+i][num%10+j] = 'p';
+			tab->tab[num/10+i][num%10+j] = 'P';
 		}
 	}
 	
 	/* Bóia */
-	while(verificaNum(tab, num, 'p') == TRUE)
-		num = rand() % (TAM*TAM);
+	for(k = 0; k < 3; k++){
+		while(checkShip(tab, num, 'p') == TRUE)
+			num = rand() % (TAM*TAM) + 1;
 	
-	tab->tab[num/10][num%10] = 'b';
+		tab->tab[num/10][num%10] = 'B';
+	}
 }
 
-int verificaNum(Tabuleiro *tab, int num, char tipo){
+
+void posPlayerShips(Tabuleiro *tab){
+	int i, j, k;
+	
+	
+}
+
+int checkShip(Tabuleiro *tab, int num, char tipo){
 	int i, j, k;
 	
 	switch(tipo){

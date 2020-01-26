@@ -28,7 +28,7 @@ int main(){
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
-				posicionarNavios(tab);
+				posMachineShips(tab);
 				imprimir(tab);
 			break;
 			

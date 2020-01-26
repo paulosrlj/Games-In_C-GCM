@@ -49,9 +49,11 @@ Tabuleiro *criarTabuleiro();
 /* Posiciona os navios da máquina */
 void posMachineShips(Tabuleiro *tab);
 
+/* Posicionar os navios do jogador */
+void posPlayerShips(Tabuleiro *tab);
+
 /* Imprime o tabuleiro */
 void imprimir(Tabuleiro *tab);
 
-
-
-int verificaNum(Tabuleiro *tab, int num, char tipo);
+/* Verifica se a posição já não é usada */
+int checkShip(Tabuleiro *tab, int num, char tipo);
