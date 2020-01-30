@@ -60,6 +60,12 @@ int verifica(int jogo[3][3]){
 	for(linha=0;linha<3;linha++){
 		for(coluna=0;coluna<3;coluna++){
 			resultado = jogo[linha][coluna] + resultado; //Verifica as colunas
+			if(resultado != 3 || resultado != -3){//Caso o resultado não tenha vencedor executar isso
+				resultado = 0;
+				for(linha=0; linha<3; linha++){ //
+				resultado = jogo[linha][linha] + resultado;
+				}
+			}
 		if(resultado == 3){ //Jogador 1 vence se a soma for 3
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
