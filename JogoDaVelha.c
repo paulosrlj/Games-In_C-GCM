@@ -7,6 +7,7 @@
 int jogo [3][3];
 char jogador1[50], jogador2[50];
 int vencedor;
+int ganhou = 0;
 
 void imprimir(int jogo[3][3]){
 	int linha, coluna;
@@ -58,16 +59,17 @@ int verifica(int jogo[3][3]){
 	int linha, coluna, resultado=0;
 	for(linha=0;linha<3;linha++){
 		for(coluna=0;coluna<3;coluna++){
-			resultado = jogo[linha][coluna] + resultado;
-		if(resultado == 3){
+			resultado = jogo[linha][coluna] + resultado; //Verifica as colunas
+		if(resultado == 3){ //Jogador 1 vence se a soma for 3
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
+			ganhou = 1;
 			return TRUE;
-		}else if(resultado == -3){
+		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			return TRUE;
 		}
 	}
-		resultado = 0;
+		resultado = 0; //Após verificar e não achar vencedor ele zera o resultado
 	}
 }
 
@@ -82,7 +84,9 @@ main(){
 	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
 		printf("\nVez de %s \n\n",jogador1);
 		jogar(jogador1, jogo);
+		if(ganhou != 1){ //Permite o jogador 2 jogar caso o 1 não tenha ganho
 		printf("\nVez de %s \n\n",jogador2);
 		jogar(jogador2, jogo);
+		}
 	}
 }
