@@ -2,22 +2,26 @@
 
 #include "batalhaNaval.h"
 
-struct tabuleiro {
-	char tab[TAM][TAM];
-	char gabarito[TAM][TAM];
-};
+
 
 
 /* Criar tabuleiro */
 Tabuleiro *criarTabuleiro(){
 	Tabuleiro *t = (Tabuleiro*) malloc(sizeof(Tabuleiro));
 	
+	/*int i, j;
+	for(i = 0; i< TAM; i++)
+		for(j = 0; j < TAM; j++)
+			t->tab[i][j] = '~';*/
+	
+	return t;
+}
+
+void inicializaTab(char *tab){
 	int i, j;
 	for(i = 0; i< TAM; i++)
 		for(j = 0; j < TAM; j++)
-			t->tab[i][j] = '~';
-	
-	return t;
+			tab[i][j] = '~';
 }
 
 void posMachineShips(Tabuleiro *tab){
@@ -81,8 +85,42 @@ void posMachineShips(Tabuleiro *tab){
 
 void posPlayerShips(Tabuleiro *tab){
 	int i, j, k;
+	int menu, menu1, menu2 = 0;
+	int corv, sub, frag, dest, port = 1;
+	int boia = 1;
 	
-	
+	while (menu != 6){
+		printf("Escolha o que deseja fazer: \n");
+		printf("[1] - Posicionar navios\n");
+		printf("[2] - Reposicionar navios\n");
+		printf("[3] - Apagar todos os navios posicionados\n");
+		printf("[4] - Imprimir tabuleiro\n");
+		printf("[5] - Iniciar Jogo\n");
+		printf("[6] - Sair\n"); scanf("%d", &menu);
+		
+		switch(menu){
+			case 1:
+				
+				while(menu1 != 7){
+					printf("Existem %d navios para serem posicionados.", corv+sub+frag+dest+port+boia);
+					printf("[1] - Posicionar corveta | %dx\n", corv);
+					printf("[2] - Posicionar submarino | %dx\n", corv);
+					printf("[3] - Posicionar fragrata | %dx\n", corv);
+					printf("[4] - Posicionar destroyer | %dx\n", corv);
+					printf("[5] - Posicionar porta-aviões | %dx\n", corv);
+					printf("[6] - Posicionar bóia | %dx\n", corv);
+					printf("[7] - Voltar\n"); scanf("%d", &menu1);
+					
+					switch(menu1){
+						case 1:
+							
+						break;
+					}
+				}
+				
+			break;
+		}
+	}
 }
 
 int checkShip(Tabuleiro *tab, int num, char tipo){
@@ -145,7 +183,7 @@ int checkShip(Tabuleiro *tab, int num, char tipo){
 }
 
 /* Imprimir */
-void imprimir(Tabuleiro *tab){
+void imprimir(char *tab){
 	int i, j;
 	printf("    ");
 	printf("0 1 2 3 4 5 6 7 8 9 10 11 12 13\n");

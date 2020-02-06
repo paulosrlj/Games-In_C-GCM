@@ -28,8 +28,16 @@ int main(){
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
-				posMachineShips(tab);
-				imprimir(tab);
+				inicializaTab(tab->tab);
+				inicializaTab(tab->tabMaq);
+				inicializaTab(tab->gabaritoMaq);
+				inicializaTab(tab->gabarito);
+				imprimir(tab->gabarito);
+				imprimir(tab->tab);
+				imprimir(tab->gabaritoMaq);
+				imprimir(tab->tabMaq);
+				
+				
 			break;
 			
 			case 2: //Jogo da memória - Francisco

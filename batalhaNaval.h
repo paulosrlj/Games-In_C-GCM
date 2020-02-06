@@ -30,6 +30,13 @@
 
 typedef struct tabuleiro Tabuleiro;
 
+struct tabuleiro {
+	char tab[TAM][TAM];
+	char gabarito[TAM][TAM];
+	char tabMaq[TAM][TAM];
+	char gabaritoMaq[TAM][TAM];
+};
+
 /* ~ -> água
    * -> tiro foi dado e não havia nada
    X -> tiro foi dado e acertou */
@@ -46,6 +53,8 @@ typedef struct tabuleiro Tabuleiro;
 /* Cria o tabuleiro */
 Tabuleiro *criarTabuleiro();
 
+void inicializaTab(char *tab);
+
 /* Posiciona os navios da máquina */
 void posMachineShips(Tabuleiro *tab);
 
@@ -53,7 +62,7 @@ void posMachineShips(Tabuleiro *tab);
 void posPlayerShips(Tabuleiro *tab);
 
 /* Imprime o tabuleiro */
-void imprimir(Tabuleiro *tab);
+void imprimir(char *tab);
 
 /* Verifica se a posição já não é usada */
 int checkShip(Tabuleiro *tab, int num, char tipo);
