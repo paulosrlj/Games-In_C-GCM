@@ -7,15 +7,17 @@
 #include <conio.h>
 #include <time.h>
 #include <locale.h>
-#include "jogoMemoria.c"
+#include "jogoMemoria.h"
 
 int main(void){
-	setlocale(LC_ALL,"");
+	setlocale(LC_ALL,"Portuguese");
 	
 	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
 	printf("==== Jogos em C - Batalha Naval, Jogo da memória, Jogo da velha. ====\n\n");
 	
 	unsigned int escolhaJogo = 0;
+	
+	int opc;
 	
 	while(escolhaJogo != 4){
 		printf("Qual jogo deseja jogar?\n");
@@ -31,9 +33,17 @@ int main(void){
 			
 				break;
 			
-			case 2: 
-				break;
-			
+			case 2:
+			printf("\n=====Modos Jogo da Velha=====\n\n");
+    		printf("[1]-Fácil");
+    		printf("\n[2]-Médio");
+    		printf("\n[3]-Difícil\n");
+    		printf("\n===============================\n\n");
+    	
+    		printf("Escolha o numero:");
+    		scanf("%d",&opc); 
+			menu(opc);
+			break;
 			case 3: //Jogo da velha - Marcio
 				
 				break;
