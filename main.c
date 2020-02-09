@@ -29,13 +29,14 @@ int main(){
 		
 			case 1: //Batalha Naval - Paulo
 				inicializaTab(tab->tab);
-				inicializaTab(tab->tabMaq);
 				inicializaTab(tab->gabaritoMaq);
-				inicializaTab(tab->gabarito);
-				imprimir(tab->gabarito);
+				
+				posMachineShips(tab->tab);
+				posMachineShips(tab->gabaritoMaq);
 				imprimir(tab->tab);
 				imprimir(tab->gabaritoMaq);
-				imprimir(tab->tabMaq);
+
+
 				
 				
 			break;

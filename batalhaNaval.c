@@ -21,10 +21,10 @@ void inicializaTab(char *tab){
 	int i, j;
 	for(i = 0; i< TAM; i++)
 		for(j = 0; j < TAM; j++)
-			tab[i][j] = '~';
+			tab[i*TAM+j] = '~';
 }
 
-void posMachineShips(Tabuleiro *tab){
+void posMachineShips(char *tab){
 	int i, j, k;
 	int num = 0;
 		
@@ -35,7 +35,7 @@ void posMachineShips(Tabuleiro *tab){
 		num = rand() % (TAM*TAM) + 1;
 
 	for(k = 0; k < Cj; k++){
-		tab->tab[num/10][num%10+k] = 'C';
+		tab[(num/10) * TAM + (num%10+k)] = 'C';
 	}
 	
 	/* Submarino */
@@ -44,7 +44,7 @@ void posMachineShips(Tabuleiro *tab){
 		num = rand() % (TAM*TAM) + 1;
 	
 	for(k = 0; k < Sj; k++){
-		tab->tab[num/10][num%10+k] = 'S';
+		tab[(num/10) * TAM + (num%10+k)] = 'S';
 	}
 	
 	/* Fragrata */
@@ -52,7 +52,7 @@ void posMachineShips(Tabuleiro *tab){
 		num = rand() % (TAM*TAM) + 1;
 	
 	for(k = 0; k < Fj; k++){
-		tab->tab[num/10][num%10+k] = 'F';
+		tab[(num/10) * TAM + (num%10+k)] = 'F';
 	}
 	
 	/* Destroyer */
@@ -60,7 +60,7 @@ void posMachineShips(Tabuleiro *tab){
 		num = rand() % (TAM*TAM) + 1;
 	
 	for(k = 0; k < Dj; k++){
-		tab->tab[num/10][num%10+k] = 'D';
+		tab[(num/10) * TAM + (num%10+k)] = 'D';
 	}
 	
 	/* Porta aviões */
@@ -69,7 +69,7 @@ void posMachineShips(Tabuleiro *tab){
 	
 	for(i = 0; i < Pi; i++){
 		for(j = 0; j < Pj; j++){
-			tab->tab[num/10+i][num%10+j] = 'P';
+			tab[(num/10+i) * TAM + (num%10+j)] = 'P';
 		}
 	}
 	
@@ -78,7 +78,7 @@ void posMachineShips(Tabuleiro *tab){
 		while(checkShip(tab, num, 'p') == TRUE)
 			num = rand() % (TAM*TAM) + 1;
 	
-		tab->tab[num/10][num%10] = 'B';
+		tab[(num/10) * TAM + (num%10)] = 'B';
 	}
 }
 
@@ -123,14 +123,14 @@ void posPlayerShips(Tabuleiro *tab){
 	}
 }
 
-int checkShip(Tabuleiro *tab, int num, char tipo){
+int checkShip(char *tab, int num, char tipo){
 	int i, j, k;
 	
 	switch(tipo){
 		//Corveta
 		case 'c':
 			for(k = 0; k < Cj; k++){
-				if(tab->tab[num/10][num%10+k] != '~')
+				if(tab[(num/10) * TAM + (num%10+k)] != '~')
 					return TRUE;
 			}
 			return FALSE;
@@ -139,7 +139,7 @@ int checkShip(Tabuleiro *tab, int num, char tipo){
 		//Submarino
 		case 's':
 			for(k = 0; k < Sj; k++){
-				if(tab->tab[num/10][num%10+k] != '~')
+				if(tab[(num/10) * TAM + (num%10+k)] != '~')
 					return TRUE;
 			}
 			return FALSE;		
@@ -148,7 +148,7 @@ int checkShip(Tabuleiro *tab, int num, char tipo){
 		//Fragrata
 		case 'f':
 			for(k = 0; k < Fj; k++){
-				if(tab->tab[num/10][num%10+k] != '~')
+				if(tab[(num/10) * TAM + (num%10+k)] != '~')
 					return TRUE;
 			}
 			return FALSE;		
@@ -157,7 +157,7 @@ int checkShip(Tabuleiro *tab, int num, char tipo){
 		//Destroyer
 		case 'd':
 			for(k = 0; k < Dj; k++){
-				if(tab->tab[num/10][num%10+k] != '~')
+				if(tab[(num/10) * TAM + (num%10+k)] != '~')
 					return TRUE;
 			}
 			return FALSE;		
@@ -167,7 +167,7 @@ int checkShip(Tabuleiro *tab, int num, char tipo){
 		case 'p':
 			for(i = 0; i < Pi; i++){
 				for(j = 0; j < Pj; j++){
-					if(tab->tab[num/10+i][num%10+j] != '~')
+					if(tab[(num/10+i) * TAM + (num%10+j)] != '~')
 						return TRUE;
 				}		
 			}
@@ -175,7 +175,7 @@ int checkShip(Tabuleiro *tab, int num, char tipo){
 		break;
 		
 		case 'b':
-			if(tab->tab[num/10][num%10] != '~')
+			if(tab[(num/10) * TAM + (num%10)] != '~')
 				return TRUE;
 			return FALSE;
 		break;
@@ -199,7 +199,7 @@ void imprimir(char *tab){
 			printf("[%d]| ",i);
 		
 		for(j = 0; j< TAM; j++){
-			printf("%c ", tab->tab[i][j]);
+			printf("%c ", tab[i*TAM+j]);
 		} 
 		printf("\n");
 	}

@@ -31,10 +31,10 @@
 typedef struct tabuleiro Tabuleiro;
 
 struct tabuleiro {
-	char tab[TAM][TAM];
-	char gabarito[TAM][TAM];
-	char tabMaq[TAM][TAM];
-	char gabaritoMaq[TAM][TAM];
+	char tab[TAM*TAM];
+	char gabarito[TAM*TAM];
+	char tabMaq[TAM*TAM];
+	char gabaritoMaq[TAM*TAM];
 };
 
 /* ~ -> água
@@ -56,7 +56,7 @@ Tabuleiro *criarTabuleiro();
 void inicializaTab(char *tab);
 
 /* Posiciona os navios da máquina */
-void posMachineShips(Tabuleiro *tab);
+void posMachineShips(char *tab);
 
 /* Posicionar os navios do jogador */
 void posPlayerShips(Tabuleiro *tab);
@@ -65,4 +65,4 @@ void posPlayerShips(Tabuleiro *tab);
 void imprimir(char *tab);
 
 /* Verifica se a posição já não é usada */
-int checkShip(Tabuleiro *tab, int num, char tipo);
+int checkShip(char *tab, int num, char tipo);
