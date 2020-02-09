@@ -39,7 +39,7 @@ int main(void){
 			break;
 			
 			case 2:
-			printf("\n=====Modos Jogo da Velha=====\n\n");
+			printf("\n=====Modos Jogo da Memória=====\n\n");
     		printf("[1]-Fácil");
     		printf("\n[2]-Médio");
     		printf("\n[3]-Difícil\n");
