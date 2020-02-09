@@ -7,22 +7,29 @@
 #include <conio.h>
 #include <time.h>
 #include <locale.h>
+<<<<<<< HEAD
 #include "jogoMemoria.h"
+=======
+#include "batalhaNaval.h"
+>>>>>>> 9163244665949ed863a09caf24c820a9ee3778fa
 
 int main(void){
 	setlocale(LC_ALL,"Portuguese");
 	
-	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
-	printf("==== Jogos em C - Batalha Naval, Jogo da memória, Jogo da velha. ====\n\n");
+	Tabuleiro *tab = criarTabuleiro();
+	srand(time(NULL));
+	
+	printf("Projeto GerÃªncia de controle e mudanÃ§as\nIntegrantes: Francisco Paulino, Paulo SÃ©rgio, Marcio Fernandes.\n\n");
+	printf("==== Jogos em C - Batalha Naval, Jogo da memÃ³ria, Jogo da velha. ====\n\n");
 	
 	unsigned int escolhaJogo = 0;
 	
 	int opc;
 	
 	while(escolhaJogo != 4){
-		printf("Qual jogo deseja jogar?\n");
+		printf("Qual jogo deseja jogar?\n\n");
 		printf("[1] - Batalha Naval\n");
-		printf("[2] - Jogo da memória\n");
+		printf("[2] - Jogo da memÃ³ria\n");
 		printf("[3] - Jogo da velha\n");
 		printf("[4] - Sair\n"); 
 		scanf("%u", &escolhaJogo);
@@ -30,7 +37,11 @@ int main(void){
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
+				posMachineShips(tab);
+				imprimir(tab);
+			break;
 			
+<<<<<<< HEAD
 				break;
 			
 			case 2:
@@ -44,13 +55,19 @@ int main(void){
     		scanf("%d",&opc); 
 			menu(opc);
 			break;
+=======
+			case 2: //Jogo da memÃ³ria - Francisco
+		
+			break;
+			
+>>>>>>> 9163244665949ed863a09caf24c820a9ee3778fa
 			case 3: //Jogo da velha - Marcio
 				
-				break;
+			break;
 		
 			case 4:
 			
-				break; 
+			break; 
 		
 		}
 	}

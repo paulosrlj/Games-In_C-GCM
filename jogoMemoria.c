@@ -80,14 +80,14 @@ do{
 
 void menu(int opc){
     int tempo,TAM;
-    /*printf("\n=====Modos Jogo da Velha=====\n\n");
+    printf("\n=====Modos Jogo da Velha=====\n\n");
     printf("[1]-Fácil");
     printf("\n[2]-Médio");
     printf("\n[3]-Difícil\n");
     printf("\n===============================\n\n");
 
     printf("Escolha o numero:");
-    scanf("%d",&opc);*/
+    scanf("%d",&opc);
 
     switch(opc){
     case 1:
