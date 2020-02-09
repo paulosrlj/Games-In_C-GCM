@@ -58,7 +58,7 @@ do{
     for (a = 0;a < TAM; a++){
         printf ("\t%d° número: ", a+1);
         scanf ("%d", &respostas[a]);
-        if (respostas[a]==numeros[a]){
+        if (respostas[a] == numeros[a]){
             acertos++;
         }
     }
