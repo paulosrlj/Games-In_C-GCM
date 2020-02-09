@@ -1,5 +1,3 @@
-//inserção das bibliotecas
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -24,7 +22,7 @@ SetConsoleTitle("jogo da memoria");
 //gera os numeros aleatórios
 srand(time(NULL));
 
-printf("O programa gera %d numeros aleatorios entre 1 e 25\n",TAM);
+printf("\nO programa gera %d numeros aleatorios entre 1 e 25\n",TAM);
 printf("Decore os numeros exibidos, e após %d segundos \nreescreva-os na tela na mesma ordem\n\n",tempo);
 printf("Start Game -[ENTER]");
 
@@ -80,14 +78,14 @@ do{
 
 void menu(int opc){
     int tempo,TAM;
-    printf("\n=====Modos Jogo da Velha=====\n\n");
+    /*printf("\n=====Modos Jogo da Velha=====\n\n");
     printf("[1]-Fácil");
     printf("\n[2]-Médio");
     printf("\n[3]-Difícil\n");
     printf("\n===============================\n\n");
 
     printf("Escolha o numero:");
-    scanf("%d",&opc);
+    scanf("%d",&opc);*/
 
     switch(opc){
     case 1:
