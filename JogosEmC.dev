@@ -1,6 +1,6 @@
 [Project]
 FileName=JogosEmC.dev
-Name=JogosEmC
+Name=GamesInC
 Type=1
 Ver=2
 ObjFiles=
@@ -19,7 +19,7 @@ ObjectOutput=
 LogOutput=
 LogOutputEnabled=0
 OverrideOutput=0
-OverrideOutputName=Batalha-Naval.exe
+OverrideOutputName=JogosEmC.exe
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=

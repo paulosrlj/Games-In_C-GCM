@@ -10,7 +10,6 @@
 int main(){
 	setlocale(LC_ALL,"");
 	
-	Tabuleiro *tab = criarTabuleiro();
 	srand(time(NULL));
 	
 	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
@@ -28,15 +27,16 @@ int main(){
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
-				inicializaTab(tab->tab);
-				inicializaTab(tab->gabaritoMaq);
+				inicializaTab(machineTab);
+				inicializaTab(machineGab);
+				inicializaTab(playerTab);
+				inicializaTab(playerGab);
 				
-				posMachineShips(tab->tab);
-				posMachineShips(tab->gabaritoMaq);
-				imprimir(tab->tab);
-				imprimir(tab->gabaritoMaq);
+				prepareMShips(machineTab, machineGab);
+				//posPlayerShips(playerTab, playerGab);
 
-
+				imprimir(machineTab);
+				imprimir(machineGab);
 				
 				
 			break;

@@ -9,33 +9,16 @@
 #define TRUE 1
 #define FALSE 0
 
-#define Ci 1 //Linhas ocupadas pela corveta
-#define Cj 2 //Colunas ocupadas pela corveta
+#define C 2 //Colunas ocupadas pela corveta
 
-#define Si 1 //Submarino
-#define Sj 3
+#define S 3 //Submarino
 
-#define Fi 1 //Fragata
-#define Fj 3 
+#define F 3 //Fragrata
 
-#define Di 1 //destroyer
-#define Dj 4
+#define D 4 //Destroyer
 
 #define Pi 2 //Porta-aviões
 #define Pj 6 
-
-#define Bi 1 //Bóia
-#define Bj 1
-
-
-typedef struct tabuleiro Tabuleiro;
-
-struct tabuleiro {
-	char tab[TAM*TAM];
-	char gabarito[TAM*TAM];
-	char tabMaq[TAM*TAM];
-	char gabaritoMaq[TAM*TAM];
-};
 
 /* ~ -> água
    * -> tiro foi dado e não havia nada
@@ -49,20 +32,27 @@ struct tabuleiro {
 1 Cruzador; 	 1x5
 1 Porta-Aviões;  2x6 */
 
+char playerTab[TAM*TAM];		//onde a máquina vai jogar
+char playerGab[TAM*TAM];		//onde seráo guardado os navios do jogador
+char machineTab[TAM*TAM];	
+char machineGab[TAM*TAM];
 
-/* Cria o tabuleiro */
-Tabuleiro *criarTabuleiro();
 
+/* Inicializar o tabuleiro com água */
 void inicializaTab(char *tab);
 
 /* Posiciona os navios da máquina */
-void posMachineShips(char *tab);
+void prepareMShips(char *machineTab, char *machineGab);
 
 /* Posicionar os navios do jogador */
-void posPlayerShips(Tabuleiro *tab);
+void posPlayerShips(char *playerTab, char *playerGab);
+
+/* Verifica se a posição já não é usada */
+int checkShip(char *tab, int num, char tipo);
+
+/* Posiciona o tipo de navio na posição indicada*/
+void setShip(char *playTab, char *gabTab, char type, int pos);
 
 /* Imprime o tabuleiro */
 void imprimir(char *tab);
 
-/* Verifica se a posição já não é usada */
-int checkShip(char *tab, int num, char tipo);
