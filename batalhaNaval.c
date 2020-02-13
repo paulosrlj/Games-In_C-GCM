@@ -9,113 +9,76 @@ void inicializaTab(char *tab){
 			tab[i*TAM+j] = '~';
 }
 
-void prepareMShips(char *machineTab, char *machineGab){
-	int i, j, k;
+void prepareMShips(char *machineGab){
+	int k;
 	int num = 0;
+	
+	char navios[] = {'c', 's', 'f', 'd', 'p', 'b', 'b', 'b'};
+	
+	for(k = 0; k < 8; k++){
+		num = rand() % (TAM*TAM) + 1;
 		
-	/* Corveta */
-	num = rand() % (TAM*TAM) + 1;
-	
-	while(checkShip(machineTab, num, 'c') == TRUE)
-		num = rand() % (TAM*TAM) + 1;
-
-	setShip(machineTab, machineGab, 'c', num);
-	
-	/* Submarino */
-	num = rand() % (TAM*TAM) + 1;
-	while(checkShip(machineTab, num, 's') == TRUE)
-		num = rand() % (TAM*TAM) + 1;
-	
-	setShip(machineTab, machineGab, 's', num);
-
-	
-	/* Fragrata */
-	num = rand() % (TAM*TAM) + 1;
-	while(checkShip(machineTab, num, 'f') == TRUE)
-		num = rand() % (TAM*TAM) + 1;
-	
-	setShip(machineTab, machineGab, 'f', num);
-
-	
-	/* Destroyer */
-	num = rand() % (TAM*TAM) + 1;
-	while(checkShip(machineTab, num, 'd') == TRUE)
-		num = rand() % (TAM*TAM) + 1;
-	
-	setShip(machineTab, machineGab, 'd', num);
-
-	
-	/* Porta aviões */
-	num = rand() % (TAM*TAM) + 1;
-	while(checkShip(machineTab, num, 'p') == TRUE)
-		num = rand() % (TAM*TAM) + 1;
-	
-	setShip(machineTab, machineGab, 'p', num);
-
-	/* Bóia */
-	for(k = 0; k < 3; k++){
-		num = rand() % (TAM*TAM) + 1;
-		while(checkShip(machineTab, num, 'b') == TRUE)
+		while(num / 10 >= TAM)
 			num = rand() % (TAM*TAM) + 1;
-	
-		setShip(machineTab, machineGab, 'b', num);
-	}
-	
+		
+		while(checkShip(machineGab, num, navios[k]) == TRUE){
+			num = rand() % (TAM*TAM) + 1;
+			while(num / 10 >= TAM)
+				num = rand() % (TAM*TAM) + 1;
+		}
+		setShip(machineGab, navios[k], num);	
+	}	
+
 }
 
-void setShip(char *playTab, char *gabTab, char type, int pos){
+void setShip(char *gabTab, char type, int pos){
 	
 	int i, j, k;
 	
 	switch(type){
 		//Seta a corveta nos dois tabuleiros
 		case 'c':
-			for(k=0; k < C; k++){
-				playTab[(pos/10) * TAM + (pos%10+k)] = 'C';
+			for(k=0; k < C; k++)
 				gabTab[(pos/10) * TAM + (pos%10+k)] = 'C';
-			}
 		break;
 		
 		case 's':
-			for(k = 0; k < S; k++){
-				playTab[(pos/10) * TAM + (pos%10+k)] = 'S';
+			for(k = 0; k < S; k++)
 				gabTab[(pos/10) * TAM + (pos%10+k)] = 'S';
-			}
+			
 		break;
 		
 		case 'f':
-			for(k = 0; k < F; k++){
-				playTab[(pos/10) * TAM + (pos%10+k)] = 'F';
+			for(k = 0; k < F; k++)
 				gabTab[(pos/10) * TAM + (pos%10+k)] = 'F';
-			}
+			
 		break;
 		
 		case 'd':
-			for(k = 0; k < D; k++){
-				playTab[(pos/10) * TAM + (pos%10+k)] = 'D';
+			for(k = 0; k < D; k++)
 				gabTab[(pos/10) * TAM + (pos%10+k)] = 'D';
-			}
+			
 		break;
 		
 		case 'p':
-			for(i = 0; i < Pi; i++){
-				for(j = 0; j < Pj; j++){
-					playTab[(pos/10+i) * TAM + (pos%10+j)] = 'P';
+			for(i = 0; i < Pi; i++)
+				for(j = 0; j < Pj; j++)
 					gabTab[(pos/10+i) * TAM + (pos%10+j)] = 'P';
-				}
-			}
 		break;
 		
 		case 'b':
-			playTab[(pos/10) * TAM + (pos%10+k)] = 'B';
-			gabTab[(pos/10) * TAM + (pos%10+k)] = 'B';
+			gabTab[(pos/10) * TAM + (pos%10)] = 'B';
+		break;
+		
+		default:
+			printf("Não foi posicionado.");
 		break;
 	}
 }
 
-void posPlayerShips(char *playerTab, char *playerGab){
+int posPlayerShips(char *playerGab){
 	int i, j, k;
-	int menuNavio, menuPos, menuRepos = 0;
+	int menuNavio, menuPos = 0;
 	int corv = 1;
 	int sub = 1;
 	int frag = 1;
@@ -125,13 +88,12 @@ void posPlayerShips(char *playerTab, char *playerGab){
 	int pos = 0;
 	
 	//Menu principal
-	while (menuNavio != 6){
+	while (menuNavio != 4){
 		printf("Escolha o que deseja fazer: \n");
 		printf("[1] - Posicionar navios\n");
-		printf("[2] - Reposicionar navios\n");
-		printf("[3] - Apagar todos os navios posicionados\n");
-		printf("[4] - Imprimir tabuleiro\n");
-		printf("[5] - Sair\n"); scanf("%d", &menuNavio);
+		printf("[2] - Apagar todos os navios posicionados\n");
+		printf("[3] - Imprimir tabuleiro\n");
+		printf("[4] - Voltar\n");  scanf("%d", &menuNavio);
 		
 		//Menu de posicionamento
 		switch(menuNavio){
@@ -155,13 +117,25 @@ void posPlayerShips(char *playerTab, char *playerGab){
 								break;
 							}
 							
+							imprimirTab(playerGab);
 							printf("Informe a posição onde deseja posicionar: "); scanf("%d", &pos);
-							while(checkShip(playerTab, pos, 'c') == TRUE){
-								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+							
+							while(posicaoValida(pos) == FALSE){
+								printf("Posição inválida, informe outra: "); scanf("%d", &pos);
 							}
 							
-							setShip(playerTab, playerGab, 'c', pos);
+							while(checkShip(playerGab, pos, 'c') == TRUE){
+								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+								
+								while(posicaoValida(pos) == FALSE){
+									printf("Posição inválida, informe outra: "); scanf("%d", &pos);
+								}
+							}
+							
+							setShip(playerGab, 'c', pos);
 							corv--;
+							system("cls");
+							imprimirTab(playerGab);
 						break;
 						
 						//Submarino
@@ -171,31 +145,51 @@ void posPlayerShips(char *playerTab, char *playerGab){
 								printf("Submarino já posicionado.\n");
 								break;
 							}
-							
+							imprimirTab(playerGab);
 							printf("Informe a posição onde deseja posicionar: "); scanf("%d", &pos);
-							while(checkShip(playerTab, pos, 's') == TRUE){
-								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+							
+							while(posicaoValida(pos) == FALSE){
+								printf("Posição inválida, informe outra: "); scanf("%d", &pos);
 							}
 							
-							setShip(playerTab, playerGab, 's', pos);
+							while(checkShip(playerGab, pos, 's') == TRUE){
+								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+								while(posicaoValida(pos) == FALSE){
+									printf("Posição inválida, informe outra: "); scanf("%d", &pos);
+								}
+							}
+							
+							setShip(playerGab, 's', pos);
 							sub--;
+							system("cls");
+							imprimirTab(playerGab);
 						break;
 						
 						//Fragrata
 						case 3:
 							system("cls");
 							if(frag != 1){
-								printf("Submarino já posicionado.\n");
+								printf("Fragrata já posicionado.\n");
 								break;
 							}
-							
+							imprimirTab(playerGab);
 							printf("Informe a posição onde deseja posicionar: "); scanf("%d", &pos);
-							while(checkShip(playerTab, pos, 'f') == TRUE){
-								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+							
+							while(posicaoValida(pos) == FALSE){
+								printf("Posição inválida, informe outra: "); scanf("%d", &pos);
 							}
 							
-							setShip(playerTab, playerGab, 'f', pos);
+							while(checkShip(playerGab, pos, 'f') == TRUE){
+								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+								while(posicaoValida(pos) == FALSE){
+									printf("Posição inválida, informe outra: "); scanf("%d", &pos);
+								}
+							}
+							
+							setShip(playerGab, 'f', pos);
 							frag--;
+							system("cls");
+							imprimirTab(playerGab);
 						break;
 						
 						//Destroyer
@@ -205,14 +199,24 @@ void posPlayerShips(char *playerTab, char *playerGab){
 								printf("Destroyer já posicionado.\n");
 								break;
 							}
-							
+							imprimirTab(playerGab);
 							printf("Informe a posição onde deseja posicionar: "); scanf("%d", &pos);
-							while(checkShip(playerTab, pos, 'd') == TRUE){
-								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+							
+							while(posicaoValida(pos) == FALSE){
+								printf("Posição inválida, informe outra: "); scanf("%d", &pos);
 							}
 							
-							setShip(playerTab, playerGab, 'd', pos);
+							while(checkShip(playerGab, pos, 'd') == TRUE){
+								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+								while(posicaoValida(pos) == FALSE){
+									printf("Posição inválida, informe outra: "); scanf("%d", &pos);
+								}
+							}
+							
+							setShip(playerGab, 'd', pos);
 							dest--;
+							system("cls");
+							imprimirTab(playerGab);
 						break;
 						
 						//Porta aviões
@@ -223,14 +227,25 @@ void posPlayerShips(char *playerTab, char *playerGab){
 								printf("Porta-aviões já posicionado.\n");
 								break;
 							}
-							
+							imprimirTab(playerGab);
 							printf("Informe a posição onde deseja posicionar: "); scanf("%d", &pos);
-							while(checkShip(playerTab, pos, 'p') == TRUE){
-								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+							
+							while(posicaoValida(pos) == FALSE){
+								printf("Posição inválida, informe outra: "); scanf("%d", &pos);
 							}
 							
-							setShip(playerTab, playerGab, 'p', pos);
+							while(checkShip(playerGab, pos, 'p') == TRUE){
+								printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+								
+								while(posicaoValida(pos) == FALSE){
+									printf("Posição inválida, informe outra: "); scanf("%d", &pos);
+								}
+							}
+							
+							setShip(playerGab, 'p', pos);
 							port--;
+							system("cls");
+							imprimirTab(playerGab);
 						break;
 						
 						//Bóia
@@ -242,15 +257,29 @@ void posPlayerShips(char *playerTab, char *playerGab){
 							}
 							
 							for(k = 0; k < 3; k++){
+								imprimirTab(playerGab);
 								printf("Informe a posição onde deseja posicionar: "); scanf("%d", &pos);
 								
-								while(checkShip(playerTab, pos, 'b') == TRUE){
-									printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+								while(posicaoValida(pos) == FALSE){
+									printf("Posição inválida, informe outra: "); scanf("%d", &pos);
 								}
 								
-								setShip(playerTab, playerGab, 'b', pos);
+								while(checkShip(playerGab, pos, 'b') == TRUE){
+									printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
+									while(posicaoValida(pos) == FALSE){
+										printf("Posição inválida, informe outra: "); scanf("%d", &pos);
+									}
+								}
+								setShip(playerGab, 'b', pos);
+								boia--;
+								system("cls");
 							}
-							boia--;
+							system("cls");
+							imprimirTab(playerGab);
+						break;
+						
+						case 7:
+							system("cls");
 						break;
 						
 						default:
@@ -262,91 +291,31 @@ void posPlayerShips(char *playerTab, char *playerGab){
 			
 			case 2:
 				system("cls");
-				printf("[1] - reposicionar corveta\n", corv);
-				printf("[2] - reposicionar submarino\n", sub);
-				printf("[3] - reposicionar fragrata\n", frag);
-				printf("[4] - reposicionar destroyer\n", dest);
-				printf("[5] - reposicionar porta-aviões\n", port);
-				printf("[6] - reposicionar bóia\n", boia);
-				printf("[7] - Voltar\n"); scanf("%d", &menuRepos);
-				
-				switch(menuRepos){
-					case 1:
-						printf("Informe a nova posição da corveta: "); scanf("%d", &pos);
-						while(checkShip(playerTab, pos, 'c') == TRUE){
-							printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
-						}
-						setShip(playerTab, playerGab, 'c', pos);
-						printf("Corveta reposicionada com sucesso.\n");
-					break;
-					
-					case 2:
-						printf("Informe a nova posição do submarino: "); scanf("%d", &pos);
-						while(checkShip(playerTab, pos, 's') == TRUE){
-							printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
-						}
-						setShip(playerTab, playerGab, 's', pos);
-						printf("Submarino reposicionado com sucesso.\n");
-					break;
-					
-					case 3:
-						printf("Informe a nova posição da fragrata: "); scanf("%d", &pos);
-						while(checkShip(playerTab, pos, 'f') == TRUE){
-							printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
-						}
-						setShip(playerTab, playerGab, 'f', pos);
-						printf("Fragrata reposicionado com sucesso.\n");
-					break;
-					
-					case 4:
-						printf("Informe a nova posição do destroyer: "); scanf("%d", &pos);
-						while(checkShip(playerTab, pos, 'd') == TRUE){
-							printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
-						}
-						setShip(playerTab, playerGab, 'd', pos);
-						printf("Destroyer reposicionado com sucesso.\n");
-					break;
-					
-					case 5:
-						printf("Informe a nova posição do porta-aviões: "); scanf("%d", &pos);
-						while(checkShip(playerTab, pos, 'p') == TRUE){
-							printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
-						}
-						setShip(playerTab, playerGab, 'p', pos);
-						printf("Porta-aviões reposicionado com sucesso.\n");
-					break;
-					
-					case 6:
-						printf("Informe a nova posição da bóia: "); scanf("%d", &pos);
-						while(checkShip(playerTab, pos, 'b') == TRUE){
-							printf("Posição já utilizada, informe outra: "); scanf("%d", &pos);
-						}
-						setShip(playerTab, playerGab, 'b', pos);
-						printf("Boia reposicionada com sucesso.\n");
-					break;
-					
-					default:
-					break;
-				}
+				inicializaTab(playerTab);
+				inicializaTab(playerGab);
+				corv++; sub++; frag++, dest++; port++; boia+=3;
+				printf("Posições apagadas com sucesso.\n");
 			break;
 			
 			case 3:
-				system("cls");
-				inicializaTab(playerTab);
-				inicializaTab(playerGab);
-				printf("Posições apagados com sucesso.\n");
+				imprimirTab(playerGab);
 			break;
 			
 			case 4:
-				imprimir(playerTab);
+				system("cls");
 			break;
-			
-			default:
-			break;
+				
 		}
 	}
+	
+	return corv+sub+frag+dest+port+boia;
 }
 
+int posicaoValida(int pos){
+	if(pos / 10 >= TAM)
+		return FALSE; //INVÁLIDO
+	return TRUE;
+}
 int checkShip(char *tab, int num, char tipo){
 	int i, j, k;
 	
@@ -407,8 +376,117 @@ int checkShip(char *tab, int num, char tipo){
 	}
 }
 
+void play(char *playerTab, char *playerGab, char *machineTab, char *machineGab){
+	system("cls");
+	int k;
+	int moves = 20;
+	int position = 0;
+	int playerScore = 0;
+	int machineScore = 0;
+	int playAgain = 0;
+	
+	inicializaTab(machineTab);
+	inicializaTab(machineGab);
+	inicializaTab(playerTab);
+	inicializaTab(playerGab);
+					
+	srand(time(NULL));
+	prepareMShips(machineGab);
+
+	int shipPos = posPlayerShips(playerGab);
+
+	while(shipPos != 0){
+		printf("Ainda existem navios a serem posicionados.\n");
+		int shipPos = posPlayerShips(playerGab);
+	}
+		
+	for(k = 0; k < moves; k++){
+		//system("cls");
+		printf("Seu tabuleiro: \n");
+		imprimirTab(playerTab);
+		
+		printf("Tabuleiro inimigo: \n");
+		imprimirTab(machineTab);
+		printf("Informe uma posição para bombardear: "); scanf("%d", &position);
+		
+		while(checkMove(machineTab, position) != TRUE){
+			printf("Você já fez uma jogada nessa posição.\n");
+			printf("Informe outra posição para bombardear: "); scanf("%d", &position);
+		}
+		
+		if(hitAShip(machineGab, position) == TRUE){
+			printf("\a");
+			playerScore++;
+			machineTab[(position/10) * TAM + (position%10)] = machineGab[(position/10) * TAM + (position%10)];
+		} else
+			machineTab[(position/10) * TAM + (position%10)] = 'X';
+		
+		//A máquina joga
+		int num = rand() % (TAM*TAM) + 1;
+		while(num / 10 >= TAM)
+			num = rand() % (TAM*TAM) + 1;
+			
+		while(checkMove(playerTab, num) != TRUE){
+			num = rand() % (TAM*TAM) + 1;
+			while(num / 10 >= TAM)
+				num = rand() % (TAM*TAM) + 1;
+		}
+		
+		if(hitAShip(playerGab, num) == TRUE){
+			machineScore++;
+			playerTab[(num/10) * TAM + (num%10)] = playerGab[(num/10) * TAM + (num%10)];
+		} else
+			playerTab[(num/10) * TAM + (num%10)] = 'X';
+	}
+	
+	//Mostrar quem ganhou
+	printf("Jogador - %d pontos.\nMáquina - %d pontos.\n", playerScore, machineScore);
+	if(playerScore > machineScore)
+		printf("Parabéns, você ganhou!\n");
+	else if(playerScore < machineScore)
+		printf("A máquina ganhou!\n");
+	else
+		printf("Empate!\n\n");
+	
+	system("pause");
+}
+
+int checkMove(char *tab, int position){
+	if(tab[(position/10) * TAM + (position%10)] == 'X')
+		return FALSE;
+	return TRUE;
+}
+
+int hitAShip(char *gabTab, int position){
+	int navio = gabTab[(position/10) * TAM + (position%10)];
+	
+	switch(navio){
+		case 'C':
+			return TRUE;
+		break;
+		case 'S':
+			return TRUE;
+		break;
+		case 'F':
+			return TRUE;
+		break;
+		case 'D':
+			return TRUE;
+		break;
+		case 'P':
+			return TRUE;
+		break;
+		case 'B':
+			return TRUE;
+		break;
+		case '~':
+			return FALSE;
+		break;
+	}
+}
+
 /* Imprimir */
-void imprimir(char *tab){
+void imprimirTab(char *tab){
 	int i, j;
 	printf("    ");
 	printf("0 1 2 3 4 5 6 7 8 9 10 11 12 13\n");

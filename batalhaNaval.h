@@ -29,7 +29,6 @@
 1 Submarino; 	 1x3
 1 Fragata; 		 1x3
 1 Destroyer; 	 1x4
-1 Cruzador; 	 1x5
 1 Porta-Aviões;  2x6 */
 
 char playerTab[TAM*TAM];		//onde a máquina vai jogar
@@ -42,17 +41,31 @@ char machineGab[TAM*TAM];
 void inicializaTab(char *tab);
 
 /* Posiciona os navios da máquina */
-void prepareMShips(char *machineTab, char *machineGab);
+void prepareMShips(char *machineGab);
 
 /* Posicionar os navios do jogador */
-void posPlayerShips(char *playerTab, char *playerGab);
+int posPlayerShips(char *playerGab);
 
 /* Verifica se a posição já não é usada */
 int checkShip(char *tab, int num, char tipo);
 
 /* Posiciona o tipo de navio na posição indicada*/
-void setShip(char *playTab, char *gabTab, char type, int pos);
+void setShip(char *gabTab, char type, int pos);
+
+/* Joga */
+void play(char *playerTab, char *playerGab, char *machineTab, char *machineGab);
+
+/* Verifica se o jogador ou a máquina fez uma jogada repitida */
+int checkMove(char *Tab, int position);
+
+/* Verifica se a posição informada pelo jogador é valida */
+
+int posicaoValida(int pos);
+
+/* Verifica se o jogador ou máquina acertou um navio */
+int hitAShip(char *gabTab, int position);
+
 
 /* Imprime o tabuleiro */
-void imprimir(char *tab);
+void imprimirTab(char *tab);
 

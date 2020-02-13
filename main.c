@@ -6,16 +6,18 @@
 #include <time.h>
 #include <locale.h>
 #include "batalhaNaval.h"
+#include "jogoMemoria.h"
+#include "JogoDaVelha.h"
 
 int main(){
 	setlocale(LC_ALL,"");
 	
-	srand(time(NULL));
-	
+
 	printf("Projeto Gerência de controle e mudanças\nIntegrantes: Francisco Paulino, Paulo Sérgio, Marcio Fernandes.\n\n");
 	printf("==== Jogos em C - Batalha Naval, Jogo da memória, Jogo da velha. ====\n\n");
 	
 	unsigned int escolhaJogo = 0;
+	unsigned int opc = 0;
 	
 	while(escolhaJogo != 4){
 		printf("Qual jogo deseja jogar?\n\n");
@@ -27,25 +29,27 @@ int main(){
 		switch(escolhaJogo){
 		
 			case 1: //Batalha Naval - Paulo
-				inicializaTab(machineTab);
-				inicializaTab(machineGab);
-				inicializaTab(playerTab);
-				inicializaTab(playerGab);
-				
-				prepareMShips(machineTab, machineGab);
-				//posPlayerShips(playerTab, playerGab);
-
-				imprimir(machineTab);
-				imprimir(machineGab);
-				
-				
+				system("cls");
+					
+				play(playerTab, playerGab, machineTab, machineGab);
+	
 			break;
 			
 			case 2: //Jogo da memória - Francisco
-		
+				system("cls");
+				printf("\n=====Modos Jogo da Memória=====\n\n");
+    			printf("[1]-Fácil");
+    			printf("\n[2]-Médio");
+    			printf("\n[3]-Difícil\n");
+    			printf("\n===============================\n\n");
+    			printf("Escolha o numero:");
+    			scanf("%d",&opc); 
+				menu(opc);
 			break;
 			
 			case 3: //Jogo da velha - Marcio
+				
+			
 				
 			break;
 		
