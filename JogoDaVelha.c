@@ -2,12 +2,12 @@
 #include<stdlib.h>
 #include<string.h>
 #include "jogoDaVelha.h"
-#define TRUE 1
-#define FALSE 0
 
-/*int jogo[3][3];
-char jogador1[50], jogador2[50];
-int vencedor;*/
+	int jogo [3][3];
+	char jogador1[50], jogador2[50];
+	int vencedor;
+	int resultado;
+	int ganhou = 0;
 
 void imprimi(int jogo[3][3]){
 	int linha, coluna;
@@ -126,7 +126,8 @@ int verificaD(int jogo[3][3]){
 		}
 }
 
-/*main(){
+void menuVelha(int n){
+	fflush(stdin);
 	printf("\nDigite o nome do jogador 1: ");
 	gets(jogador1);
 	fflush(stdin);
@@ -134,11 +135,12 @@ int verificaD(int jogo[3][3]){
 	gets(jogador2);
 	fflush(stdin);
 	iniciar(jogo);
-	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
+	while(vencedor != TRUE){ 
+		//Estrutura que se repete até algum jogador vencer
 		printf("\nVez de %s \n\n",jogador1);
 		jogar(jogador1, jogo);
 		printf("\nVez de %s \n\n",jogador2);
 		jogar(jogador2, jogo);
 	}
-}*/
+}
 

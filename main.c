@@ -22,15 +22,7 @@ int main(void){
 	
 	unsigned int escolhaJogo = 0;
 	
-	int opc;
-	
-	//questão de marcio
-	
-	int jogo[3][3];
-	char jogador1[50], jogador2[50];
-	int vencedor;
-	int resultado;
-	int ganhou = 0;
+	int opc,n;
 	
 	while(escolhaJogo != 4){
 		printf("Qual jogo deseja jogar?\n\n");
@@ -59,22 +51,8 @@ int main(void){
 			break;
 			
 			case 3: //Jogo da velha - Marcio
-			printf("\nDigite o nome do jogador 1: ");
-			gets(jogador1);
-			fflush(stdin);
-			printf("\nDigite o nome do jogador 2: ");
-			gets(jogador2);
-			fflush(stdin);
-			iniciar(jogo);
-			while(ganhou != TRUE){ //Estrutura que se repete até algum jogador vencer
-			printf("\nVez de %s \n\n",jogador1);
-			jogar(jogador1, jogo);
-			if(ganhou != 1){ //Permite o jogador 2 jogar caso o 1 não tenha ganho
-			printf("\nVez de %s \n\n",jogador2);
-			jogar(jogador2, jogo);
-			}
-		}
-			printf("Fim do jogo, obrigado por jogar!!");
+			
+			menuVelha(n);
 			break;
 		
 			case 4:
