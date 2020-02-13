@@ -1,14 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include "jogoDaVelha.h"
 #define TRUE 1
 #define FALSE 0
 
-int jogo [3][3];
+/*int jogo[3][3];
 char jogador1[50], jogador2[50];
-int vencedor;
+int vencedor;*/
 
-void imprimir(int jogo[3][3]){
+void imprimi(int jogo[3][3]){
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		for(coluna=0; coluna<3; coluna++){
@@ -26,7 +27,7 @@ void imprimir(int jogo[3][3]){
 
 void jogar(char jogador[50], int jogo[3][3]){
 	int linha, coluna;
-	imprimir(jogo);
+	imprimi(jogo);
 	printf("\n Digite em ordem a linha e a coluna que deseja marcar: ");
 	scanf("%d%d",&linha, &coluna);
 	linha--;
@@ -41,9 +42,13 @@ void jogar(char jogador[50], int jogo[3][3]){
 		system("cls");
 		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
-	vencedor = verifica(jogo);
+	vencedor = verificaL(jogo); //Verifica se o jogador ganhou por linha
+	 //Verifica se o jogador ganhou por coluna se não tiver ganho por linha
+	vencedor = verificaC(jogo);
+	 //Verifica se o jogador ganhou por Diagonal caso não ganhou por linha ou coluna.
+	vencedor = verificaD(jogo);
+	
 }
-
 void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
@@ -53,25 +58,75 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	}
 	vencedor = FALSE;
 }
-
-int verifica(int jogo[3][3]){
-	int linha, coluna, resultado=0;
+int verificaL(int jogo[3][3]){
+	int linha, coluna;
 	for(linha=0;linha<3;linha++){
+		resultado=0;
 		for(coluna=0;coluna<3;coluna++){
-			resultado = jogo[linha][coluna] + resultado;
-		if(resultado == 3){
-			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
-			return TRUE;
+				resultado = resultado + jogo[linha][coluna];
+		}
+		if(resultado == 3){ //Verifica se o jogador 1 ganhou por linha
+		system("cls");
+		printf("O vencedor foi %s!!\n",jogador1);
+		ganhou=1;
+		imprimir(jogo);
+		return TRUE;	
 		}else if(resultado == -3){
-			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
+			system("cls");
+			printf("O vencedor foi %s!!\n",jogador2);//Verifica se o jogador 2 ganhou por linha
+			ganhou=1;
+			imprimir(jogo);
+			return TRUE;
+	}	}
+}
+
+
+int verificaC(int jogo[3][3]){
+	int linha, coluna; 
+	for(coluna=0;coluna<3;coluna++){
+		resultado=0;
+		for(linha=0;linha<3;linha++){
+			resultado += jogo[linha][coluna];
+		}
+		if(resultado == 3){ 
+		system("cls");
+		printf("O vencedor foi %s!!\n",jogador1);
+		ganhou=1;
+		imprimi(jogo);
+		return TRUE;	
+		}else if(resultado == -3){
+			system("cls");
+			printf("O vencedor foi %s!!\n",jogador2);
+			ganhou=1;
+			imprimi(jogo);
 			return TRUE;
 		}
 	}
-		resultado = 0;
-	}
 }
 
-main(){
+int verificaD(int jogo[3][3]){
+	int k, resultado2 =0;
+	resultado=0;
+		for(k=0;k<3;k++){
+			resultado = resultado + jogo[k][k];
+		}
+		resultado2 = jogo[0][2] + jogo[2][0] + jogo[2][0];
+		if(resultado == 3 || resultado2 ==3) { 
+		system("cls");
+		printf("O vencedor foi %s!!\n",jogador1);
+		imprimi(jogo);
+		ganhou=1;
+		return TRUE;	
+		}else if(resultado == -3 || resultado2 == -3){
+			system("cls");
+			printf("O vencedor foi %s!!\n",jogador2);
+			imprimi(jogo);
+			ganhou=1;
+			return TRUE;
+		}
+}
+
+/*main(){
 	printf("\nDigite o nome do jogador 1: ");
 	gets(jogador1);
 	fflush(stdin);
@@ -85,4 +140,5 @@ main(){
 		printf("\nVez de %s \n\n",jogador2);
 		jogar(jogador2, jogo);
 	}
-}
+}*/
+

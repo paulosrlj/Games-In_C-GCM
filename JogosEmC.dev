@@ -29,8 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=3
-
+UnitCount=7
 
 [VersionInfo]
 Major=1
@@ -62,7 +61,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-
 FileName=batalhaNaval.h
 CompileCpp=0
 Folder=
@@ -73,8 +71,47 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-
 FileName=batalhaNaval.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=jogoMemoria.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=jogoMemoria.h
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=JogoDaVelha.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=JogoDaVelha.h
 CompileCpp=0
 Folder=
 Compile=1
