@@ -20,7 +20,6 @@ void inicializa(int TAMANHO,int tempo){
 setlocale(LC_ALL,"Portuguese");
 
 //inclusão de titulo no console;
-SetConsoleTitle("jogo da memoria");
 
 //gera os numeros aleatórios
 srand(time(NULL));
