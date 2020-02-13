@@ -9,7 +9,7 @@
 #include <locale.h>
 #include "batalhaNaval.h"
 #include "jogoMemoria.h"
-//#include "JogoDaVelha.h"
+#include "JogoDaVelha.h"
 
 int main(void){
 	setlocale(LC_ALL,"");
@@ -25,7 +25,7 @@ int main(void){
 	while(escolhaJogo != 4){
 		printf("Qual jogo deseja jogar?\n\n");
 		printf("[1] - Batalha Naval\n");
-		printf("[2] - Jogo da memÃ³ria\n");
+		printf("[2] - Jogo da memória\n");
 		printf("[3] - Jogo da velha\n");
 		printf("[4] - Sair\n"); 
 		scanf("%u", &escolhaJogo);
@@ -53,7 +53,7 @@ int main(void){
 			
 			case 3: //Jogo da velha - Marcio
 				
-			
+			menuVelha();
 				
 			break;
 		

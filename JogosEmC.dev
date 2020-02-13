@@ -31,7 +31,6 @@ CompilerSet=0
 CompilerSettings=0000000000000000000000000
 UnitCount=7
 
-
 [VersionInfo]
 Major=1
 Minor=0
@@ -62,7 +61,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-
 FileName=batalhaNaval.h
 CompileCpp=0
 Folder=
@@ -73,7 +71,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-
 FileName=batalhaNaval.c
 CompileCpp=0
 Folder=
@@ -103,7 +100,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
+[Unit7]
 FileName=JogoDaVelha.h
 CompileCpp=0
 Folder=
@@ -113,8 +110,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
-FileName=..\..\..\..\..\Downloads\Games-In_C-GCM-master\JogoDaVelha.c
+[Unit6]
+FileName=JogoDaVelha.c
 CompileCpp=0
 Folder=
 Compile=1
