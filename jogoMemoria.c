@@ -6,8 +6,6 @@
 #include <conio.h>
 #include <time.h>
 
-#define TAM 6
-
 #include "jogoMemoria.h"
 
 void inicializa(int TAMANHO,int tempo){
@@ -85,7 +83,7 @@ do{
         }
     }
     printf ("\n\n");
-
+	system("pause");
     system("cls");
 }
 

@@ -52,8 +52,8 @@ int main(void){
 			break;
 			
 			case 3: //Jogo da velha - Marcio
-				
-			menuVelha();
+				system("cls");
+				menuVelha();
 				
 			break;
 		

@@ -1,3 +1,4 @@
+//#define TAMANHO 6
 
 //procedimento de inicialização do jogo
 

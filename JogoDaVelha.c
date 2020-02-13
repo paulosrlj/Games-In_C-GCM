@@ -70,12 +70,14 @@ int verificaL(int jogo[3][3]){
 		printf("O vencedor foi %s!!\n",jogador1);
 		ganhou=1;
 		imprimir(jogo);
+		system("pause");
 		return TRUE;	
 		}else if(resultado == -3){
 			system("cls");
 			printf("O vencedor foi %s!!\n",jogador2);//Verifica se o jogador 2 ganhou por linha
 			ganhou=1;
 			imprimir(jogo);
+			system("pause");
 			return TRUE;
 	}	}
 }
@@ -93,12 +95,14 @@ int verificaC(int jogo[3][3]){
 		printf("O vencedor foi %s!!\n",jogador1);
 		ganhou=1;
 		imprimir(jogo);
+		system("pause");
 		return TRUE;	
 		}else if(resultado == -3){
 			system("cls");
 			printf("O vencedor foi %s!!\n",jogador2);
 			ganhou=1;
 			imprimir(jogo);
+			system("pause");
 			return TRUE;
 		}
 	}
@@ -116,12 +120,14 @@ int verificaD(int jogo[3][3]){
 		printf("O vencedor foi %s!!\n",jogador1);
 		imprimir(jogo);
 		ganhou=1;
+		system("pause");
 		return TRUE;	
 		}else if(resultado == -3 || resultado2 == -3){
 			system("cls");
 			printf("O vencedor foi %s!!\n",jogador2);
 			imprimir(jogo);
 			ganhou=1;
+			system("pause");
 			return TRUE;
 		}
 }
@@ -135,12 +141,14 @@ void menuVelha(){
 	gets(jogador2);
 	fflush(stdin);
 	iniciar(jogo);
-	while(vencedor != TRUE){ 
+	while(ganhou != TRUE){ 
 		//Estrutura que se repete até algum jogador vencer
 		printf("\nVez de %s \n\n",jogador1);
 		jogar(jogador1, jogo);
-		printf("\nVez de %s \n\n",jogador2);
-		jogar(jogador2, jogo);
+		if(ganhou != TRUE){
+			printf("\nVez de %s \n\n",jogador2);
+			jogar(jogador2, jogo);
+		}
 	}
 }
 
