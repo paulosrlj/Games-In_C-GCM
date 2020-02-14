@@ -8,6 +8,7 @@ int jogo [3][3];
 char jogador1[50], jogador2[50];
 int vencedor;
 int ganhou = 0;
+int resultado;
 
 void imprimir(int jogo[3][3]){
 	int linha, coluna;
@@ -42,7 +43,8 @@ void jogar(char jogador[50], int jogo[3][3]){
 		system("cls");
 		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
-	vencedor = verifica(jogo);
+	vencedor = verifica1(jogo);
+	vencedor = verifica2(jogo);
 }
 
 void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
@@ -55,9 +57,10 @@ void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	vencedor = FALSE;
 }
 
-int verifica(int jogo[3][3]){
-	int linha, coluna, resultado=0;
+int verifica1(int jogo[3][3]){
+	int linha, coluna;
 	for(linha=0;linha<3;linha++){
+		resultado=0;
 		for(coluna=0;coluna<3;coluna++){
 			resultado = jogo[linha][coluna] + resultado; //Verifica as colunas
 			if(resultado != 3 || resultado != -3){//Caso o resultado não tenha vencedor executar isso
@@ -73,11 +76,29 @@ int verifica(int jogo[3][3]){
 		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			return TRUE;
+			}
+		}
+	}	
+}
+
+int verifica2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
+	int linha, coluna;
+	for(linha=0; linha<3; linha++){
+		resultado =0;//Inicia resultado com 0 / Zera a variavel após atualizar a linha
+		for(coluna=0; coluna<3; coluna++){
+			resultado = resultado + jogo[linha][coluna];
+			}
+		if(resultado == 3){ //Jogador 1 vence se a soma for 3
+			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
+			ganhou = 1;
+			return TRUE;
+		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
+			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
+			return TRUE;
 		}
 	}
-		resultado = 0; //Após verificar e não achar vencedor ele zera o resultado
-	}
 }
+
 
 main(){
 	printf("\nDigite o nome do jogador 1: ");
