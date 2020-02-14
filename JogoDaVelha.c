@@ -47,10 +47,10 @@ void jogar(char jogador[50], int jogo[3][3]){
 	vencedor = empate(jogo);
 }
 
-void iniciaasr(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
+void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
-		for(coluna=0;coluna<3;coluna++){
+		for(coluna=0;coluna<3;coluna--){
 			jogo[linha][coluna] = 0;
 		}
 	}
