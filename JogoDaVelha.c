@@ -65,7 +65,7 @@ int verifica1(int jogo[3][3]){
 			resultado = jogo[linha][coluna] + resultado; //Verifica as colunas
 			if(resultado != 3 || resultado != -3){//Caso o resultado não tenha vencedor executar isso
 				resultado = 0;
-				for(linha=0; linha<3; linha++){ //
+				for(linha=0; linha<3; linha++){ //Verifica se o jogar ganhou por pontuação na diagonal
 				resultado = jogo[linha][linha] + resultado;
 				}
 			}
@@ -81,7 +81,7 @@ int verifica1(int jogo[3][3]){
 	}	
 }
 
-int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
+void verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		resultado =0;//Inicia resultado com 0 / Zera a variavel após atualizar a linha
