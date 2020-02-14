@@ -81,7 +81,7 @@ int verifica1(int jogo[3][3]){
 	}	
 }
 
-void verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
+int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		resultado =0;//Inicia resultado com 0 / Zera a variavel após atualizar a linha
