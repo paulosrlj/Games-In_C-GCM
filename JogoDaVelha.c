@@ -25,7 +25,7 @@ void imprimir(int jogo[3][3]){
 	}
 }
 
-void jar(char jogador[50], int jogo[3][3]){
+void jogar(char jogador[50], int jogo[3][3]){
 	int linha, coluna;
 	imprimir(jogo);
 	printf("\n Digite em ordem a linha e a coluna que deseja marcar: ");
@@ -47,7 +47,7 @@ void jar(char jogador[50], int jogo[3][3]){
 	vencedor = empate(jogo);
 }
 
-void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
+void iniciaasr(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		for(coluna=0;coluna<3;coluna++){
