@@ -44,7 +44,8 @@ void jogar(char jogador[50], int jogo[3][3]){
 		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
 	vencedor = verifica1(jogo);
-	vencedor = verifica2(jogo);
+	vencedor = verificar2(jogo);
+	vencedor = empate(jogo);
 }
 
 void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
@@ -81,7 +82,7 @@ int verifica1(int jogo[3][3]){
 	}	
 }
 
-int verifica2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
+int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		resultado =0;//Inicia resultado com 0 / Zera a variavel após atualizar a linha
@@ -99,6 +100,21 @@ int verifica2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 	}
 }
 
+int empate(int jogo[3][3]){
+	int k, l; int contador=0;
+	for(k=0; k<3; k++){
+		for(l=0;l<3; l++){
+			if(jogo[k][l] == 0){
+			contador++;
+			}
+		}
+	}
+	if(contador == 0 && ganhou != 1){
+		printf("O JOGO DEU EMPATE!!!");
+		ganhou=1;
+		return TRUE;
+	}
+}
 
 main(){
 	printf("\nDigite o nome do jogador 1: ");
