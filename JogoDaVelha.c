@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 #define TRUE 1
 #define FALSE 0
 
@@ -26,7 +25,7 @@ void imprimir(int jogo[3][3]){
 	}
 }
 
-void jogar(char jogador[50], int jogo[3][3]){
+void jar(char jogador[50], int jogo[3][3]){
 	int linha, coluna;
 	imprimir(jogo);
 	printf("\n Digite em ordem a linha e a coluna que deseja marcar: ");
