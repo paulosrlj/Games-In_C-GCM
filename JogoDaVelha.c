@@ -73,7 +73,7 @@ int verifica1(int jogo[3][3]){
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
 			return TRUE;
-		}else if(resultado == 3){ //Jogador 2 vence se a soma for -3
+		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			return TRUE;
 			}
