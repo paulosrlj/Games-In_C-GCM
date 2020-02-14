@@ -13,11 +13,11 @@ void imprimir(int jogo[3][3]){
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
 		for(coluna=0; coluna<3; coluna++){
-			if(jogo[linha][coluna] == 1){
+			if(jogo[linha][coluna] == 1){ //Caso o valor na matriz seja 1 será impresso um X
 				printf(" X |");
-			}else if(jogo[linha][coluna] == -1){
+			}else if(jogo[linha][coluna] == -1){ //Caso o valor da matriz seja -1 será impresso O
 			printf(" O |" );	
-			}else{
+			}else{ //Caso o valor da matriz não seja 1 ou -1 será impresso "  "
 				printf("   |");
 			}
 		}
