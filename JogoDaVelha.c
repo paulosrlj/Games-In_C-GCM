@@ -50,7 +50,7 @@ void jogar(char jogador[50], int jogo[3][3]){
 void iniciar(int jogo[3][3]){ //Limpa a matriz e transformar vencedor em FALSE;
 	int linha, coluna;
 	for(linha=0; linha<3; linha++){
-		for(coluna=0;coluna<3;coluna--){
+		for(coluna=0;coluna<3;coluna++){
 			jogo[linha][coluna] = 0;
 		}
 	}
@@ -73,7 +73,7 @@ int verifica1(int jogo[3][3]){
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
 			return TRUE;
-		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
+		}else if(resultado == 3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			return TRUE;
 			}
