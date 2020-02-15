@@ -43,7 +43,10 @@ void jogar(char jogador[50], int jogo[3][3]){
 		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
 	vencedor = verifica1(jogo);
-	vencedor = verificar2(jogo);
+	if(vencedor != TRUE){
+		vencedor = verificar2(jogo);
+	}
+	
 	vencedor = empate(jogo);
 }
 
