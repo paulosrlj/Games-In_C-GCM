@@ -76,9 +76,12 @@ int verifica1(int jogo[3][3]){
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
 			return TRUE;
+			system("pause");
 		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
+			ganhou = 1;
 			return TRUE;
+			system("pause");
 			}
 		}
 	}	
@@ -86,24 +89,22 @@ int verifica1(int jogo[3][3]){
 
 int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 	int linha, coluna;
-	for(linha=0; linha<3; linha++){
+	for(coluna=0;coluna<3;coluna++){
 		resultado =0;//Inicia resultado com 0 / Zera a variavel após atualizar a linha
-		for(coluna=0; coluna<3; coluna++){
+		for(linha=0;linha<3;linha++){
 			resultado = resultado + jogo[linha][coluna];
 			}
-			if(linha == 3 && resultado != 3 && resultado != -3){ //Verifica o segundo lado da diagonal
-				resultado=0;
-				resultado = jogo[1][1] + jogo[0][2] + jogo[2][0];
-				ganhou=1;
-				return TRUE;
-		}
 		if(resultado == 3){ //Jogador 1 vence se a soma for 3
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
 			return TRUE;
-		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
+			system("pause");
+		}
+		else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
+			ganhou=1;
 			return TRUE;
+			system("pause");
 		}
 		
 	}
@@ -122,6 +123,7 @@ int empate(int jogo[3][3]){
 		printf("O JOGO DEU EMPATE!!!");
 		ganhou=1;
 		return TRUE;
+		system("pause");
 	}
 }
 
