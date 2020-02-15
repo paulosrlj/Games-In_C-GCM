@@ -42,11 +42,10 @@ void jogar(char jogador[50], int jogo[3][3]){
 		system("cls");
 		printf("**********IMPOSSIVEL ADICIONAR NESSA POSICAO********** \n\n");
 	}
-	vencedor = verifica1(jogo);
-	if(vencedor != TRUE){
-		vencedor = verificar2(jogo);
-	}
 	
+	vencedor = verifica1(jogo);
+	vencedor = verificar2(jogo);
+	vencedor = verificaD2(jogo);
 	vencedor = empate(jogo);
 }
 
@@ -76,12 +75,10 @@ int verifica1(int jogo[3][3]){
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
 			return TRUE;
-			system("pause");
 		}else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			ganhou = 1;
 			return TRUE;
-			system("pause");
 			}
 		}
 	}	
@@ -98,15 +95,28 @@ int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
 			return TRUE;
-			system("pause");
 		}
 		else if(resultado == -3){ //Jogador 2 vence se a soma for -3
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			ganhou=1;
 			return TRUE;
-			system("pause");
 		}
 		
+	}
+}
+
+int verificaD2(int jogo[3][3]){
+	int resultado = jogo[0][2] + jogo[1][1] + jogo[2][0];
+	if(resultado == 3){
+		printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
+		ganhou = 1;
+		return TRUE;
+	}else if(resultado == -3){
+		printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
+		ganhou=1;
+		return TRUE;
+	}else{
+		return FALSE;
 	}
 }
 
@@ -136,12 +146,12 @@ main(){
 	gets(jogador2);
 	fflush(stdin);
 	iniciar(jogo);
-	while(vencedor != TRUE){ //Estrutura que se repete até algum jogador vencer
+	while(ganhou != TRUE){ //Estrutura que se repete até algum jogador vencer
 		printf("\nVez de %s \n\n",jogador1);
 		jogar(jogador1, jogo);
 		if(ganhou != 1){ //Permite o jogador 2 jogar caso o 1 não tenha ganho
 		printf("\nVez de %s \n\n",jogador2);
 		jogar(jogador2, jogo);
 		}
-	}
+	} printf("\n\n\nObrigado por Jogar!!");
 }
