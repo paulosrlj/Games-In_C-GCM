@@ -120,6 +120,7 @@ int empate(int jogo[3][3]){
 		}
 	}
 	if(contador == 0 && ganhou != 1){
+		system("cls");
 		printf("O JOGO DEU EMPATE!!!");
 		ganhou=1;
 		return TRUE;
