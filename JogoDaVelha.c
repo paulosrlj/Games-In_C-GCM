@@ -91,6 +91,12 @@ int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 		for(coluna=0; coluna<3; coluna++){
 			resultado = resultado + jogo[linha][coluna];
 			}
+			if(linha == 3 && resultado != 3 && resultado != -3){ //Verifica o segundo lado da diagonal
+				resultado=0;
+				resultado = jogo[1][1] + jogo[0][2] + jogo[2][0];
+				ganhou=1;
+				return TRUE;
+		}
 		if(resultado == 3){ //Jogador 1 vence se a soma for 3
 			printf("\n*****************O jogador %s foi vencedor!!!*****************\n",jogador1);
 			ganhou = 1;
@@ -99,6 +105,7 @@ int verificar2(int jogo[3][3]){ //Verifica se o jogador ganha por linha
 			printf("\n*****************O jogador %s foi o vencedor!!!*****************\n",jogador2);
 			return TRUE;
 		}
+		
 	}
 }
 
